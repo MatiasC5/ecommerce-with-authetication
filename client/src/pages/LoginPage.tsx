@@ -9,7 +9,7 @@ export const LoginPage = () => {
     handleSubmit,
     formState: { errors },
   } = useForm();
-  const { signIn, isAuthenticated, errors: signinErrors } = useAuth();
+  const { signIn, isAuthenticated, errors: signInErrors } = useAuth();
 
   const navigate = useNavigate();
 
@@ -24,7 +24,7 @@ export const LoginPage = () => {
   return (
     <div className="flex h-[calc(100vh-100px)] items-center justify-center">
       <div className="bg-zinc-800 max-w-md p-10 rounded-md">
-        {signinErrors.map((error, i) => {
+        {signInErrors.map((error, i) => {
           return (
             <div className="bg-red-500 text-white  p-2" key={i}>
               {error}

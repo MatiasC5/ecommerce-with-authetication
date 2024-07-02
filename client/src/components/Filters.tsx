@@ -15,7 +15,7 @@ export const Filters = () => {
 
       <select
         onChange={handleSelectChange}
-        className="border-2 border-black text-xl"
+        className="border-2 border-black text-xl text-black"
       >
         <option value="all">All</option>
         <option value="electronics">Electronics</option>

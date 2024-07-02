@@ -6,6 +6,7 @@ import { useProducts } from "../hooks/useProducts";
 export const Products = () => {
   const { products, getProducts } = useProducts();
   const { filters } = useFilters();
+
   const filteredProducts = filterProducts(products, filters);
 
   useEffect(() => {
