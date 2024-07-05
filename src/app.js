@@ -5,13 +5,14 @@ import { config } from "dotenv";
 import cors from "cors";
 import cookieParser from "cookie-parser";
 import morgan from "morgan";
+import { FRONTEND_URL } from "./config.js";
 config();
 
 const app = express();
 
 app.use(
   cors({
-    origin: process.env.FRONTEND_URL,
+    origin: FRONTEND_URL,
     credentials: true,
   })
 );

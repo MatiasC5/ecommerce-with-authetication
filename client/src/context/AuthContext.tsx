@@ -17,7 +17,7 @@ export const AuthContext = createContext({
   user: null,
   errors: [],
   isAuthenticated: false,
-  isLoading: false,
+  isLoading: true,
 });
 
 export const AuthProvider = ({ children }: AuthContextProps) => {
@@ -29,6 +29,7 @@ export const AuthProvider = ({ children }: AuthContextProps) => {
   const register = async (user = {}) => {
     try {
       const res = await registerRequest(user);
+
       if (res.status === 200) {
         setUser(res.data);
         setIsAuthenticated(true);
@@ -41,10 +42,13 @@ export const AuthProvider = ({ children }: AuthContextProps) => {
   const login = async (user = {}) => {
     try {
       const res = await loginRequest(user);
+      console.log(res);
 
       setUser(res.data);
       setIsAuthenticated(true);
     } catch (error) {
+      console.log(error);
+
       if (Array.isArray(error.response.data)) {
         return setErrors(error.response.data);
       }
@@ -60,6 +64,7 @@ export const AuthProvider = ({ children }: AuthContextProps) => {
   useEffect(() => {
     async function checkLogin() {
       const cookies = Cookies.get();
+
       if (!cookies.token) {
         setIsAuthenticated(false);
         setIsLoading(false);

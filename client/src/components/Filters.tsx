@@ -9,7 +9,7 @@ export const Filters = () => {
         <input
           type="text"
           onChange={handleInputChange}
-          className="border-2 border-black h-10 px-2"
+          className="border-2 border-black h-10 px-2 text-black"
         />
       </form>
 

@@ -12,7 +12,7 @@ const NavBar = () => {
       <ul>
         {isAuthenticated ? (
           <>
-            <li>Welcome{user.username}</li>
+            <li>Welcome {user.username}</li>
             <li>
               <Link to="/" onClick={() => logout()}>
                 Logout

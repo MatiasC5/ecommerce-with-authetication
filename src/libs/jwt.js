@@ -1,10 +1,11 @@
 import jwt from "jsonwebtoken";
+import { SECRET_TOKEN } from "../config.js";
 
 export const createAccesToken = (payload) => {
   return new Promise((resolve, reject) => {
     jwt.sign(
       payload,
-      process.env.SECRET_TOKEN,
+      SECRET_TOKEN,
       {
         expiresIn: "1d",
       },

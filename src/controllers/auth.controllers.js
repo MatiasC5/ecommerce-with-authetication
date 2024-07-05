@@ -1,14 +1,17 @@
+import { SECRET_TOKEN } from "../config.js";
 import { createAccesToken } from "../libs/jwt.js";
 import User from "../models/user.model.js";
 import bcrypt from "bcryptjs";
+import jwt from "jsonwebtoken";
 
 export const register = async (req, res) => {
   const { email, password, username } = req.body;
 
   try {
     const userExists = await User.findOne({ email });
-    if (userExists)
+    if (userExists) {
       return res.status(400).json(["The email is already in use"]);
+    }
 
     const passwordHash = await bcrypt.hash(password, 10);
 
@@ -36,11 +39,14 @@ export const login = async (req, res) => {
   try {
     const userFound = await User.findOne({ email });
 
-    if (!userFound) return res.status(400).json({ message: "User not found" });
+    if (!userFound) {
+      return res.status(400).json({ message: "User not found" });
+    }
 
     const isMatch = await bcrypt.compare(password, userFound.password);
-    if (!isMatch)
+    if (!isMatch) {
       return res.status(400).json({ message: "Incorrect Password" });
+    }
 
     const token = await createAccesToken({ id: userFound._id });
     console.log(token);
@@ -75,11 +81,11 @@ export const profile = async (req, res) => {
 };
 
 export const verifyToken = async (req, res) => {
-  const { token } = req.cookie;
+  const { token } = req.cookies;
 
   if (!token) return res.status(401).json({ message: "Unauthorized" });
 
-  jwt.verify(token, process.env.SECRET_TOKEN, async (err, user) => {
+  jwt.verify(token, SECRET_TOKEN, async (err, user) => {
     if (err) return res.status(403).json({ message: "Unauthorized" });
 
     const userFound = await User.findById(user.id);
