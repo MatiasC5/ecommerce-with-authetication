@@ -42,7 +42,6 @@ export const AuthProvider = ({ children }: AuthContextProps) => {
   const login = async (user = {}) => {
     try {
       const res = await loginRequest(user);
-      console.log(res);
 
       setUser(res.data);
       setIsAuthenticated(true);
@@ -52,6 +51,7 @@ export const AuthProvider = ({ children }: AuthContextProps) => {
       if (Array.isArray(error.response.data)) {
         return setErrors(error.response.data);
       }
+      setErrors([error.response.data.message]);
     }
   };
 
@@ -60,6 +60,15 @@ export const AuthProvider = ({ children }: AuthContextProps) => {
     setIsAuthenticated(false);
     setUser(null);
   };
+
+  useEffect(() => {
+    if (errors.length > 0) {
+      const timer = setTimeout(() => {
+        setErrors([]);
+      }, 3000);
+      return () => clearTimeout(timer);
+    }
+  }, [errors]);
 
   useEffect(() => {
     async function checkLogin() {

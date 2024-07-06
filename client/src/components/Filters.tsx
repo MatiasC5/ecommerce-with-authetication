@@ -1,11 +1,11 @@
 import { useFilters } from "../hooks/useFilters";
 
 export const Filters = () => {
-  const { handleInputChange, handleSelectChange } = useFilters();
+  const { handleInputChange, handleSelectChange, handleSubmit } = useFilters();
 
   return (
     <section className="flex gap-4 mt-4">
-      <form>
+      <form onSubmit={handleSubmit}>
         <input
           type="text"
           onChange={handleInputChange}

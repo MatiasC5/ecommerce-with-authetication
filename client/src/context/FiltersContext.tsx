@@ -22,6 +22,9 @@ export const FiltersContext = createContext({
   handleSelectChange: (event: React.ChangeEvent<HTMLSelectElement>) => {
     event;
   },
+  handleSubmit: (event: React.FormEvent<HTMLFormElement>) => {
+    event;
+  },
 });
 
 export const FiltersProvider = ({ children }: ProductContextProps) => {
@@ -50,6 +53,10 @@ export const FiltersProvider = ({ children }: ProductContextProps) => {
     setFilters({ ...filters, category: value });
   }
 
+  function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
+    e.preventDefault();
+  }
+
   return (
     <FiltersContext.Provider
       value={{
@@ -58,6 +65,7 @@ export const FiltersProvider = ({ children }: ProductContextProps) => {
         getProductCategory,
         handleInputChange,
         handleSelectChange,
+        handleSubmit,
       }}
     >
       {children}

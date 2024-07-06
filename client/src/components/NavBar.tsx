@@ -5,31 +5,35 @@ const NavBar = () => {
   const { logout, isAuthenticated, user } = useAuth();
 
   return (
-    <nav className="h-20 w-full bg-zinc-500">
+    <nav className="flex justify-between p-2 h-20 w-full bg-zinc-500 font-bold text-xl">
       <Link to={isAuthenticated ? "/" : "/login"}>
         <h1> Ecommerce</h1>
       </Link>
-      <ul>
+
+      <div className="flex gap-4 ">
         {isAuthenticated ? (
           <>
-            <li>Welcome {user.username}</li>
-            <li>
-              <Link to="/" onClick={() => logout()}>
+            <h3 className="mt-2">
+              Welcome{" "}
+              {user.username.slice(0, 1).toUpperCase() + user.username.slice(1)}
+            </h3>
+            <button className="bg-red-400 w-20 h-10 rounded-md  hover:bg-red-300">
+              <Link to="/login" onClick={() => logout()}>
                 Logout
               </Link>
-            </li>
+            </button>
           </>
         ) : (
           <>
-            <li>
+            <button className="bg-sky-400 w-20 h-10 rounded-md  hover:bg-sky-300">
               <Link to="/login">Login</Link>
-            </li>
-            <li>
+            </button>
+            <button className="bg-orange-400 w-20 h-10 rounded-md  hover:bg-orange-300 ">
               <Link to="/register">Register</Link>
-            </li>
+            </button>
           </>
         )}
-      </ul>
+      </div>
     </nav>
   );
 };
