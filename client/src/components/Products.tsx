@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import { useFilters } from "../hooks/useFilters";
 import { filterProducts } from "../helpers/filterProducts";
 import { useProducts } from "../hooks/useProducts";
+import { AddToCart, RemoveFromCart } from "../../public/Icons";
 
 export const Products = () => {
   const { products, getProducts } = useProducts();
@@ -30,12 +31,12 @@ export const Products = () => {
 
             <strong>$ {product.price.toFixed(2)}</strong>
             <div className="flex gap-2">
-              <button className="bg-sky-400 font-bold p-2 mt-4 rounded-md hover:bg-sky-300">
+              <button className="border border-black p-2 mt-4 rounded-md ">
                 {" "}
-                Add
+                <AddToCart />
               </button>
-              <button className="bg-red-500 font-bold p-2 mt-4 rounded-md hover:bg-red-300">
-                Delete
+              <button className="border border-black  p-2 mt-4 rounded-md ">
+                <RemoveFromCart />
               </button>
             </div>
           </li>
