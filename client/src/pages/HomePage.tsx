@@ -1,3 +1,4 @@
+import { CategoriesList } from "../components/CategoriesList";
 import { Filters } from "../components/Filters";
 
 import { Products } from "../components/Products";
@@ -6,7 +7,10 @@ const HomePage = () => {
   return (
     <>
       <Filters />
-      <Products />
+      <div className="flex w-full px-8">
+        <CategoriesList />
+        <Products />
+      </div>
     </>
   );
 };

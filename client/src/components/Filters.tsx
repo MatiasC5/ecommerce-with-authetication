@@ -1,21 +1,26 @@
 import { useFilters } from "../hooks/useFilters";
+import { SearchIcon } from "../../public/Icons";
 
 export const Filters = () => {
   const { handleInputChange, handleSelectChange, handleSubmit } = useFilters();
 
   return (
-    <section className="flex gap-4 mt-4">
-      <form onSubmit={handleSubmit}>
+    <section className="flex flex-col items-center gap-4 mt-4">
+      <form onSubmit={handleSubmit} className="flex items-center">
+        <label htmlFor="search">
+          <SearchIcon />
+        </label>
         <input
           type="text"
           onChange={handleInputChange}
-          className="border-2 border-black h-10 px-2 text-black"
+          className="border border-black rounded-full h-10 px-4 text-black w-80"
+          id="search"
         />
       </form>
 
       <select
         onChange={handleSelectChange}
-        className="border-2 border-black text-xl text-black"
+        className="border border-black  text-xl  text-black w-40"
       >
         <option value="all">All</option>
         <option value="electronics">Electronics</option>

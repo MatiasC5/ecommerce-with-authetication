@@ -5,9 +5,9 @@ const NavBar = () => {
   const { logout, isAuthenticated, user } = useAuth();
 
   return (
-    <nav className="flex justify-between p-2 h-20 w-full bg-zinc-500 font-bold text-xl">
+    <nav className="flex justify-between items-center p-2 h-20 w-full bg-violet-500 font-bold text-xl text-white">
       <Link to={isAuthenticated ? "/" : "/login"}>
-        <h1> Ecommerce</h1>
+        <h1 className="px-2 text-4xl">iShop</h1>
       </Link>
 
       <div className="flex gap-4 ">
@@ -25,7 +25,7 @@ const NavBar = () => {
           </>
         ) : (
           <>
-            <button className="bg-sky-400 w-20 h-10 rounded-md  hover:bg-sky-300">
+            <button className="bg-sky-500 w-20 h-10 rounded-md  hover:bg-sky-300">
               <Link to="/login">Login</Link>
             </button>
             <button className="bg-orange-400 w-20 h-10 rounded-md  hover:bg-orange-300 ">

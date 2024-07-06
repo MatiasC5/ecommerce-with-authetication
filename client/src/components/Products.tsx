@@ -14,20 +14,21 @@ export const Products = () => {
   }, []);
 
   return (
-    <section className="grid lg:grid-cols-3 items-center p-10 gap-24">
+    <ul className="flex flex-col w-full  p-10 gap-24">
       {filteredProducts.map((product) => {
         return (
-          <div
-            key={product.id}
-            className=" flex flex-col justify-center items-center mt-4"
-          >
+          <li className="w-full">
             <h3 className="truncate w-40 text-xl m-4">{product.title}</h3>
-            <img
-              src={product.image}
-              alt={product.title}
-              className="w-20 h-20 object-contain"
-            />
+            <div className="flex gap-4 text-lg ">
+              <img
+                src={product.image}
+                alt={product.title}
+                className="w-20 h-20 object-contain"
+              />
+              <p className="font-semibold">{product.description}</p>
+            </div>
 
+            <strong>$ {product.price.toFixed(2)}</strong>
             <div className="flex gap-2">
               <button className="bg-sky-400 font-bold p-2 mt-4 rounded-md hover:bg-sky-300">
                 {" "}
@@ -37,9 +38,9 @@ export const Products = () => {
                 Delete
               </button>
             </div>
-          </div>
+          </li>
         );
       })}
-    </section>
+    </ul>
   );
 };

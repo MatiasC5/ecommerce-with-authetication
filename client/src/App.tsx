@@ -15,7 +15,7 @@ function App() {
       <ProductsProvider>
         <FiltersProvider>
           <BrowserRouter>
-            <main className=" mx-auto px-10 flex flex-col items-center">
+            <main className=" mx-auto  flex flex-col items-center">
               <NavBar />
               <Routes>
                 <Route path="/" element={<HomePage />} />
