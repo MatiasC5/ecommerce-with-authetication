@@ -19,7 +19,7 @@ export const Products = () => {
       {filteredProducts.map((product) => {
         return (
           <li className="w-full">
-            <h3 className="truncate w-40 text-xl m-4">{product.title}</h3>
+            <h3 className=" text-xl m-4">{product.title}</h3>
             <div className="flex gap-4 text-lg ">
               <img
                 src={product.image}
