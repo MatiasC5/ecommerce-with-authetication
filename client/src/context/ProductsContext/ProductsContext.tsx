@@ -1,5 +1,5 @@
 import { createContext, useState } from "react";
-import { getAllProducts } from "../api/products.ts";
+import { getAllProducts } from "../../api/products";
 
 interface ProductContextProps {
   children: React.ReactNode;

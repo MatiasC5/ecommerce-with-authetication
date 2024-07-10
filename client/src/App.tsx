@@ -2,13 +2,13 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import HomePage from "./pages/HomePage";
 import { LoginPage } from "./pages/LoginPage";
 import NavBar from "./components/NavBar";
-import { ProductsProvider } from "./context/ProductsContext";
-import { FiltersProvider } from "./context/FiltersContext";
 import { RegisterPage } from "./pages/RegisterPage";
-import { AuthProvider } from "./context/AuthContext";
 import { CartPage } from "./pages/CartPage";
 import { ProtectedRoutes } from "./ProtectedRoutes";
 import CartProvider from "./context/CartContext/CartProvider";
+import { AuthProvider } from "./context/AuthContext/AuthContext";
+import { ProductsProvider } from "./context/ProductsContext/ProductsContext";
+import { FiltersProvider } from "./context/FiltersContext/FiltersContext";
 
 function App() {
   return (

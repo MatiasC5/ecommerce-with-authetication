@@ -1,5 +1,5 @@
 import { createContext, useState } from "react";
-import { getCategories } from "../api/products";
+import { getCategories } from "../../api/products";
 interface Filters {
   category: string;
   title: string;

@@ -1,5 +1,9 @@
 import { createContext, useEffect, useState } from "react";
-import { loginRequest, registerRequest, verifyTokenRequest } from "../api/auth";
+import {
+  loginRequest,
+  registerRequest,
+  verifyTokenRequest,
+} from "../../api/auth";
 import Cookies from "js-cookie";
 
 interface AuthContextProps {
