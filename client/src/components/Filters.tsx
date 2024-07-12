@@ -15,6 +15,7 @@ export const Filters = () => {
           onChange={handleInputChange}
           className="border border-black rounded-full h-10 px-4 text-black w-80"
           id="search"
+          autoComplete="off"
         />
       </form>
 

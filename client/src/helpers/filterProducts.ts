@@ -1,18 +1,12 @@
-interface Products {
-  title: string;
-  price: number;
-  description: string;
-  category: string;
-  image: string;
-  id: number;
-}
+import { Product } from "./productInterface";
+
 interface Filters {
   category: string;
   title: string;
   price: number;
 }
 
-export const filterProducts = (products: Products[], filters: Filters) => {
+export const filterProducts = (products: Product[], filters: Filters) => {
   return products.filter((product) => {
     if (
       product.price >= filters.price &&

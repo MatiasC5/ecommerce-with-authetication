@@ -1,29 +1,21 @@
 import { createContext, useState } from "react";
 import { getAllProducts } from "../../api/products";
+import { Product } from "../../helpers/productInterface";
 
 interface ProductContextProps {
   children: React.ReactNode;
 }
 
-interface Products {
-  title: string;
-  price: number;
-  description: string;
-  category: string;
-  image: string;
-  id: number;
-}
-
 export const ProductContext = createContext({
-  products: [] as Products[],
-  setProducts: (products: Products[]) => {
+  products: [] as Product[],
+  setProducts: (products: Product[]) => {
     products;
   },
   getProducts: () => {},
 });
 
 export const ProductsProvider = ({ children }: ProductContextProps) => {
-  const [products, setProducts] = useState<Products[]>([]);
+  const [products, setProducts] = useState<Product[]>([]);
 
   const getProducts = async () => {
     const res = await getAllProducts();

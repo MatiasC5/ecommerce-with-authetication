@@ -5,7 +5,7 @@ import NavBar from "./components/NavBar";
 import { RegisterPage } from "./pages/RegisterPage";
 import { CartPage } from "./pages/CartPage";
 import { ProtectedRoutes } from "./ProtectedRoutes";
-import CartProvider from "./context/CartContext/CartProvider";
+import CartProvider from "./context/CartContext/CartContext";
 import { AuthProvider } from "./context/AuthContext/AuthContext";
 import { ProductsProvider } from "./context/ProductsContext/ProductsContext";
 import { FiltersProvider } from "./context/FiltersContext/FiltersContext";
