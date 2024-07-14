@@ -1,21 +1,46 @@
+import { IncrementProductInCart, RemoveFromCart } from "../../public/Icons";
 import { Product } from "../helpers/productInterface";
 import { useCart } from "../hooks/useCart";
 
 export const CartPage = () => {
-  const { cart } = useCart();
+  const { cart, addToCart } = useCart();
 
   return (
-    <section className="h-screen">
+    <section className="flex items-center justify-center w-full">
       {cart.map((p: Product) => (
-        <div key={p.id}>
-          <h3>{p.title}</h3>
-          <img
-            src={p.image}
-            alt={p.title}
-            className="w-20 h-20 object-contain"
-          />
-          <span>{p.quantity}</span>
-        </div>
+        <ul
+          key={p.id}
+          className="h-screen border border-black px-2 my-2 w-6/12"
+        >
+          <li className="flex flex-col justify-center items-start">
+            <h3 className="text-xl mt-4 ">{p.title}</h3>
+            <div className="flex justify-between w-full items-center align-middle">
+              {" "}
+              <div className="flex  items-center mt-2 gap-4">
+                <img
+                  src={p.image}
+                  alt={p.title}
+                  className="w-20  object-contain"
+                />
+                <span className="font-bold text-xl w-10 h-10 border border-black rounded-full flex items-center justify-center mt-4">
+                  {p.quantity}
+                </span>
+              </div>
+              <div className="flex gap-2 ">
+                <button
+                  className="border border-black  p-2 mt-4 rounded-md "
+                  onClick={() => addToCart(p)}
+                >
+                  <IncrementProductInCart />
+                </button>
+                <button className="border border-black  p-2 mt-4 rounded-md ">
+                  {" "}
+                  <RemoveFromCart />
+                </button>
+              </div>
+            </div>
+          </li>
+        </ul>
       ))}
     </section>
   );

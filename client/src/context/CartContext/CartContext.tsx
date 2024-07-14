@@ -21,13 +21,12 @@ const CartProvider = ({ children }: propsContext) => {
   function addToCart(product: Product) {
     const indexProduct = cart.findIndex((p) => p.id === product.id);
 
-    if (indexProduct > 0) {
+    if (indexProduct >= 0) {
       cart.map((p) => {
-        setCart([{ ...p, quantity: (p.quantity += 1) }]);
+        p.id === product.id && setCart([{ ...p, quantity: (p.quantity += 1) }]);
       });
-    } else {
-      setCart((prevState) => [...prevState, { ...product, quantity: 1 }]);
     }
+    return setCart((prevState) => [...prevState, { ...product, quantity: 1 }]);
   }
 
   return (

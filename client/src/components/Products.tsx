@@ -4,11 +4,13 @@ import { filterProducts } from "../helpers/filterProducts";
 import { useProducts } from "../hooks/useProducts";
 import { AddToCart, RemoveFromCart } from "../../public/Icons";
 import { useCart } from "../hooks/useCart";
+import { useAuth } from "../hooks/useAuth";
 
 export const Products = () => {
   const { products, getProducts } = useProducts();
   const { filters } = useFilters();
   const { addToCart } = useCart();
+  const { isAuthenticated } = useAuth();
   const filteredProducts = filterProducts(products, filters);
 
   useEffect(() => {
@@ -16,36 +18,42 @@ export const Products = () => {
   }, [getProducts]);
 
   return (
-    <ul className="flex flex-col w-full  p-10 gap-24">
-      {filteredProducts.map((product) => {
-        return (
-          <li className="w-full" key={product.id}>
-            <h3 className=" text-xl m-4">{product.title}</h3>
-            <div className="flex gap-4 text-lg ">
-              <img
-                src={product.image}
-                alt={product.title}
-                className="w-20 h-20 object-contain"
-              />
-              <p className="font-semibold">{product.description}</p>
-            </div>
+    <>
+      {isAuthenticated ? (
+        <ul className="flex flex-col w-full  p-10 gap-24">
+          {filteredProducts.map((product) => {
+            return (
+              <li className="w-full" key={product.id}>
+                <h3 className=" text-xl m-4">{product.title}</h3>
+                <div className="flex gap-4 text-lg ">
+                  <img
+                    src={product.image}
+                    alt={product.title}
+                    className="w-20 h-20 object-contain"
+                  />
+                  <p className="font-semibold">{product.description}</p>
+                </div>
 
-            <strong>$ {product.price.toFixed(2)}</strong>
-            <div className="flex gap-2">
-              <button
-                className="border border-black p-2 mt-4 rounded-md "
-                onClick={() => addToCart(product)}
-              >
-                {" "}
-                <AddToCart />
-              </button>
-              <button className="border border-black  p-2 mt-4 rounded-md ">
-                <RemoveFromCart />
-              </button>
-            </div>
-          </li>
-        );
-      })}
-    </ul>
+                <strong>$ {product.price.toFixed(2)}</strong>
+                <div className="flex gap-2">
+                  <button
+                    className="border border-black p-2 mt-4 rounded-md "
+                    onClick={() => addToCart(product)}
+                  >
+                    {" "}
+                    <AddToCart />
+                  </button>
+                  <button className="border border-black  p-2 mt-4 rounded-md ">
+                    <RemoveFromCart />
+                  </button>
+                </div>
+              </li>
+            );
+          })}
+        </ul>
+      ) : (
+        <h3>Loading...</h3>
+      )}
+    </>
   );
 };
