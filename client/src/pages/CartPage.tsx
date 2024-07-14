@@ -1,18 +1,19 @@
-import { IncrementProductInCart, RemoveFromCart } from "../../public/Icons";
+import {
+  DecrementProductFromCart,
+  IncrementProductInCart,
+  RemoveFromCart,
+} from "../../public/Icons";
 import { Product } from "../helpers/productInterface";
 import { useCart } from "../hooks/useCart";
 
 export const CartPage = () => {
-  const { cart, addToCart } = useCart();
+  const { cart, addToCart, substractFromCart, deleteFromCart } = useCart();
 
   return (
     <section className="flex items-center justify-center w-full">
-      {cart.map((p: Product) => (
-        <ul
-          key={p.id}
-          className="h-screen border border-black px-2 my-2 w-6/12"
-        >
-          <li className="flex flex-col justify-center items-start">
+      <ul className="h-screen border border-black px-2 my-2 w-6/12">
+        {cart.map((p: Product) => (
+          <li className="flex flex-col justify-center items-start" key={p.id}>
             <h3 className="text-xl mt-4 ">{p.title}</h3>
             <div className="flex justify-between w-full items-center align-middle">
               {" "}
@@ -33,15 +34,24 @@ export const CartPage = () => {
                 >
                   <IncrementProductInCart />
                 </button>
-                <button className="border border-black  p-2 mt-4 rounded-md ">
+                <button
+                  className="border border-black  p-2 mt-4 rounded-md "
+                  onClick={() => substractFromCart(p)}
+                >
+                  <DecrementProductFromCart />
+                </button>
+                <button
+                  className="border border-black  p-2 mt-4 rounded-md "
+                  onClick={() => deleteFromCart(p)}
+                >
                   {" "}
                   <RemoveFromCart />
                 </button>
               </div>
             </div>
           </li>
-        </ul>
-      ))}
+        ))}
+      </ul>
     </section>
   );
 };

@@ -13,6 +13,12 @@ export const CartContext = createContext({
   addToCart: (product: Product) => {
     product;
   },
+  substractFromCart: (product: Product) => {
+    product;
+  },
+  deleteFromCart: (product: Product) => {
+    product;
+  },
 });
 
 const CartProvider = ({ children }: propsContext) => {
@@ -22,15 +28,36 @@ const CartProvider = ({ children }: propsContext) => {
     const indexProduct = cart.findIndex((p) => p.id === product.id);
 
     if (indexProduct >= 0) {
-      cart.map((p) => {
-        p.id === product.id && setCart([{ ...p, quantity: (p.quantity += 1) }]);
+      const newCart = cart.map((p) => {
+        return p.id === product.id ? { ...p, quantity: (p.quantity += 1) } : p;
       });
+      setCart(newCart);
+    } else {
+      setCart((prevState) => [...prevState, { ...product, quantity: 1 }]);
     }
-    return setCart((prevState) => [...prevState, { ...product, quantity: 1 }]);
+  }
+
+  function substractFromCart(product: Product) {
+    const indexProduct = cart.findIndex((p) => p.id === product.id);
+
+    if (indexProduct >= 0) {
+      const newCart = cart.map((p) => {
+        return p.id === product.id ? { ...p, quantity: (p.quantity -= 1) } : p;
+      });
+      setCart(newCart);
+    } else {
+      setCart((prevState) => [...prevState, { ...product, quantity: 1 }]);
+    }
+  }
+
+  function deleteFromCart(product: Product) {
+    setCart(cart.filter((p) => p.id !== product.id));
   }
 
   return (
-    <CartContext.Provider value={{ cart, setCart, addToCart }}>
+    <CartContext.Provider
+      value={{ cart, setCart, addToCart, substractFromCart, deleteFromCart }}
+    >
       {children}
     </CartContext.Provider>
   );
