@@ -3,7 +3,7 @@ import { Cart } from "../../public/Icons";
 import { CategoriesList } from "../components/CategoriesList";
 import { Filters } from "../components/Filters";
 
-import { Products } from "../components/Products";
+import { Products } from "../components/Products/Products";
 
 const HomePage = () => {
   return (

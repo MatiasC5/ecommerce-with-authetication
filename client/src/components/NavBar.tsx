@@ -6,7 +6,7 @@ const NavBar = () => {
 
   return (
     <nav className="flex justify-between items-center p-2 h-20 w-full bg-violet-500 font-bold text-xl text-white">
-      <NavLink to={isAuthenticated ? "/" : "/login"}>
+      <NavLink to={"/"}>
         <h1 className="px-2 text-4xl">iShop</h1>
       </NavLink>
 

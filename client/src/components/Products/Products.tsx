@@ -1,27 +1,24 @@
-import { useEffect } from "react";
-import { useFilters } from "../hooks/useFilters";
-import { filterProducts } from "../helpers/filterProducts";
-import { useProducts } from "../hooks/useProducts";
-import { AddToCart, RemoveFromCart } from "../../public/Icons";
-import { useCart } from "../hooks/useCart";
-import { useAuth } from "../hooks/useAuth";
+import { useFilters } from "../../hooks/useFilters";
+import { filterProducts } from "../../helpers/filterProducts";
+import { useProducts } from "../../hooks/useProducts";
+import { AddToCart, RemoveFromCart } from "../../../public/Icons";
+import { useCart } from "../../hooks/useCart";
+import { useAuth } from "../../hooks/useAuth";
+import { Product } from "../../helpers/productInterface";
+import "./Products.css";
 
 export const Products = () => {
-  const { products, getProducts } = useProducts();
+  const { products } = useProducts();
   const { filters } = useFilters();
   const { addToCart } = useCart();
-  const { isAuthenticated } = useAuth();
+  const { isLoading } = useAuth();
   const filteredProducts = filterProducts(products, filters);
-
-  useEffect(() => {
-    getProducts();
-  }, [getProducts]);
 
   return (
     <>
-      {isAuthenticated ? (
+      {!isLoading ? (
         <ul className="flex flex-col w-full  p-10 gap-24">
-          {filteredProducts.map((product) => {
+          {filteredProducts.map((product: Product) => {
             return (
               <li className="w-full" key={product.id}>
                 <h3 className=" text-xl m-4">{product.title}</h3>
@@ -52,7 +49,16 @@ export const Products = () => {
           })}
         </ul>
       ) : (
-        <h3>Loading...</h3>
+        <div className="lds-roller">
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+        </div>
       )}
     </>
   );

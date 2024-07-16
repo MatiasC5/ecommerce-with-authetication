@@ -9,6 +9,10 @@ import CartProvider from "./context/CartContext/CartContext";
 import { AuthProvider } from "./context/AuthContext/AuthContext";
 import { ProductsProvider } from "./context/ProductsContext/ProductsContext";
 import { FiltersProvider } from "./context/FiltersContext/FiltersContext";
+import { ElectronicsPage } from "./pages/ElectronicsPage";
+import { MensClothingPage } from "./pages/MensClothingPage";
+import { JeweleryPage } from "./pages/JeweleryPage";
+import { WomensClothingPage } from "./pages/WomensClothingPage";
 
 function App() {
   return (
@@ -23,6 +27,16 @@ function App() {
                   <Route path="/" element={<HomePage />} />
                   <Route path="/login" element={<LoginPage />} />
                   <Route path="/register" element={<RegisterPage />} />
+                  <Route path="/electronics" element={<ElectronicsPage />} />
+                  <Route path="/jewelery" element={<JeweleryPage />} />
+                  <Route
+                    path="/men's clothing"
+                    element={<MensClothingPage />}
+                  />
+                  <Route
+                    path="/women's clothing"
+                    element={<WomensClothingPage />}
+                  />
                   <Route element={<ProtectedRoutes />}>
                     <Route path="/cart" element={<CartPage />} />
                   </Route>
