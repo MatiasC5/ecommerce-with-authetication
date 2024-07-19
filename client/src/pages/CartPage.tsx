@@ -26,6 +26,7 @@ export const CartPage = () => {
                 <span className="font-bold text-xl w-10 h-10 border border-black rounded-full flex items-center justify-center mt-4">
                   {p.quantity}
                 </span>
+                <strong className="mt-4">${p.price}</strong>
               </div>
               <div className="flex gap-2 ">
                 <button

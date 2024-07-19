@@ -1,9 +1,9 @@
 import { Link } from "react-router-dom";
 import { Cart } from "../../public/Icons";
-import { CategoriesList } from "../components/CategoriesList";
-import { Filters } from "../components/Filters";
+import { CategoriesList } from "../components/Categories/CategoriesList";
 
 import { Products } from "../components/Products/Products";
+import { Filters } from "../components/Filters/Filters";
 
 const HomePage = () => {
   return (

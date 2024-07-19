@@ -1,5 +1,5 @@
 import { NavLink } from "react-router-dom";
-import { useAuth } from "../hooks/useAuth";
+import { useAuth } from "../../hooks/useAuth";
 
 const NavBar = () => {
   const { logout, isAuthenticated, user } = useAuth();
@@ -7,7 +7,7 @@ const NavBar = () => {
   return (
     <nav className="flex justify-between items-center p-2 h-20 w-full bg-violet-500 font-bold text-xl text-white">
       <NavLink to={"/"}>
-        <h1 className="px-2 text-4xl">ShopyLand</h1>
+        <h1 className="px-2 text-4xl">ShopiLand</h1>
       </NavLink>
 
       <div className="flex gap-4 ">

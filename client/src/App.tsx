@@ -1,7 +1,6 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import HomePage from "./pages/HomePage";
 import { LoginPage } from "./pages/LoginPage";
-import NavBar from "./components/NavBar";
 import { RegisterPage } from "./pages/RegisterPage";
 import { CartPage } from "./pages/CartPage";
 import { ProtectedRoutes } from "./ProtectedRoutes";
@@ -13,6 +12,7 @@ import { ElectronicsPage } from "./pages/ElectronicsPage";
 import { MensClothingPage } from "./pages/MensClothingPage";
 import { JeweleryPage } from "./pages/JeweleryPage";
 import { WomensClothingPage } from "./pages/WomensClothingPage";
+import NavBar from "./components/NavBar/NavBar";
 
 function App() {
   return (

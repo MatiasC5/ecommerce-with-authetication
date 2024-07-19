@@ -1,4 +1,5 @@
-import { AddToCart, RemoveFromCart, SearchIcon } from "../../public/Icons";
+import { AddToCart, RemoveFromCart } from "../../public/Icons";
+import { SearchInput } from "../components/Filters/SearchInput";
 
 import { filterProducts } from "../helpers/filterProducts";
 import { Product } from "../helpers/productInterface";
@@ -13,21 +14,10 @@ export const ElectronicsPage = () => {
   const filteredProducts = filterProducts(products, filters);
   const { isLoading } = useAuth();
   const { addToCart } = useCart();
-  const { handleInputChange, handleSubmit } = useFilters();
+
   return (
     <>
-      <form onSubmit={handleSubmit} className="flex items-center mt-4">
-        <label htmlFor="search">
-          <SearchIcon />
-        </label>
-        <input
-          type="text"
-          onChange={handleInputChange}
-          className="border border-black rounded-full h-10 px-4 text-black w-80"
-          id="search"
-          autoComplete="off"
-        />
-      </form>
+      <SearchInput />
 
       <section className="flex w-full px-8">
         {!isLoading ? (
